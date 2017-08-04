@@ -1,19 +1,35 @@
 {
-    "light": {
-        "type": "console",
-        "num_leds": 32
+  "light": {
+    "type": "epistar_lpd8806",
+    "num_leds": 32,
+    "simulate_mode": false,
+    "spidev": "/dev/spidev0.0"
+  },
+  "ci_server": {
+    "type": "tabletennis",
+    "pollrate_s": 5,
+    " api_token": "bogus"
+  },
+  "jobs": [
+    {
+      "name": "going-to-hospital-api",
+      "branch": "undefined"
     },
-    "ci_server": {
-        "type": "tabletennis",
-        "api_token": "hello",
-        "pollrate_s": 3
+    {
+      "name": "gth-frontline",
+      "branch": "undefined"
     },
-    "jobs": [
-        { "name": "build-lights", "branch": "master" },
-        { "name": "java-faker", "branch": "master" },
-        { "name": "pact-jvm", "branch": "master" },
-        { "name": "pact-consumer-swift", "branch": "master" },
-        { "name": "pact-consumer-js-dsl", "branch": "master" },
-        { "name": "pact_broker-docker", "branch": "master" }
-    ]
+    {
+      "name": "product-catalogue-api",
+      "branch": "undefined"
+    },
+    {
+      "name": "product-catalogue-eligibility-api",
+      "branch": "undefined"
+    }
+  ],
+  "sound": {
+    "enabled": false,
+    "bin_path": "mpg321"
+  }
 }

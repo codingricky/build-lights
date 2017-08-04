@@ -164,18 +164,18 @@
                                 "tabletennis"
                             ]
                         },
-                        "api_token": {
-                            "type": "string"
-                        },
                         "pollrate_s": {
                             "type": "integer",
                             "minimum": 1
+                        },
+                        "api_token": {
+                            "type": "string"
                         }
                     },
                     "required": [
                         "type",
-                        "api_token",
-                        "pollrate_s"
+                        "pollrate_s",
+                        "api_token"
                     ],
                     "additionalProperties": false
                 }
