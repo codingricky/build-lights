@@ -32,7 +32,8 @@ export const CiTabContent = (model) => {
     'bamboo': 'User (Optional)',
     'buildkite': 'Organization Slug',
     'circleci': 'Team Name',
-    'travisci': 'Account'
+    'travisci': 'Account',
+    'tabletennis': 'API Key'
   }
   const username = isToolOneOf(['bamboo', 'buildkite', 'circleci', 'travisci']) ? (
     <div className='fieldset'>
@@ -62,6 +63,7 @@ export const CiTabContent = (model) => {
           <option value='circleci'>Circle CI</option>
           <option value='jenkins'>Jenkins</option>
           <option value='travisci'>Travis CI</option>
+          <option value='tabletennis'>Table Tennis</option>
         </select>
         {address}
         {username}
