@@ -35,6 +35,9 @@ module.exports.persist = (payload, lightConfigFile) => {
       case 'travisci':
         toolData = { username: payload.ciUsername }
         break
+      case 'tabletennis':
+        toolData = { apiToken: payload.ciApiToken }
+        break
     }
 
     merge(data.ci_server, toolData)

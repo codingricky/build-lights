@@ -47,7 +47,7 @@ export const CiTabContent = (model) => {
       <input type='password' id='ciPassword' placeholder='' name='ciPassword' value={model.configuration.password} />
     </div>) : ''
 
-  const apiToken = isToolOneOf(['buildkite', 'circleci']) ? (
+  const apiToken = isToolOneOf(['buildkite', 'circleci', 'tabletennis']) ? (
     <div className='fieldset'>
       <label for='ciApiToken'>API token</label>
       <input type='text' id='ciApiToken' placeholder='' name='ciApiToken' value={model.configuration.apiToken} />
