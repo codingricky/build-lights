@@ -1,0 +1,19 @@
+{
+    "light": {
+        "type": "console",
+        "num_leds": 32
+    },
+    "ci_server": {
+        "type": "tabletennis",
+        "api_token": "hello",
+        "pollrate_s": 3
+    },
+    "jobs": [
+        { "name": "build-lights", "branch": "master" },
+        { "name": "java-faker", "branch": "master" },
+        { "name": "pact-jvm", "branch": "master" },
+        { "name": "pact-consumer-swift", "branch": "master" },
+        { "name": "pact-consumer-js-dsl", "branch": "master" },
+        { "name": "pact_broker-docker", "branch": "master" }
+    ]
+}

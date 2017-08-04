@@ -155,6 +155,29 @@
                         "pollrate_s"
                     ],
                     "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "enum": [
+                                "tabletennis"
+                            ]
+                        },
+                        "api_token": {
+                            "type": "string"
+                        },
+                        "pollrate_s": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "api_token",
+                        "pollrate_s"
+                    ],
+                    "additionalProperties": false
                 }
             ]
         },
