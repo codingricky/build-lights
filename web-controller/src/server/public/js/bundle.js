@@ -5257,7 +5257,7 @@ var CiTabContent = function CiTabContent(model) {
     return tools.indexOf(model.configuration.tool) > -1;
   };
 
-  var address = isToolOneOf(['bamboo', 'jenkins']) ? bp0$5([bp1$4(['Address of the ', bp2$3('CI server you want to connect to')]), bp3$2({
+  var address = isToolOneOf(['bamboo', 'jenkins', 'tabletennis']) ? bp0$5([bp1$4(['Address of the ', bp2$3('CI server you want to connect to')]), bp3$2({
     type: 'text',
     id: 'ciAddress',
     placeholder: 'http://myci.mycompany',

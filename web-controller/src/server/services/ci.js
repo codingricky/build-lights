@@ -36,7 +36,7 @@ module.exports.persist = (payload, lightConfigFile) => {
         toolData = { username: payload.ciUsername }
         break
       case 'tabletennis':
-        toolData = { apiToken: payload.ciApiToken }
+        toolData = { apiToken: payload.ciApiToken, url: payload.ciAddress }
         break
     }
 
@@ -51,5 +51,5 @@ module.exports.mutateModel = (model, payload) => {
   model.tools[toolIdx].configuration.address = payload.ciAddress || ''
   model.tools[toolIdx].configuration.username = payload.ciUsername || ''
   model.tools[toolIdx].configuration.password = payload.ciPassword || ''
-  model.tools[toolIdx].configuration.apiToken = payload.ciApiToken || ''
+  model.tools[toolIdx].configuration.api_token = payload.ciApiToken || ''
 }

@@ -22,7 +22,7 @@ export const CiTabContent = (model) => {
     return tools.indexOf(model.configuration.tool) > -1
   }
 
-  const address = isToolOneOf(['bamboo', 'jenkins']) ? (
+  const address = isToolOneOf(['bamboo', 'jenkins', 'tabletennis']) ? (
     <div className='fieldset'>
       <label for='ciAddress'>Address of the <span>CI server you want to connect to</span></label>
       <input type='text' id='ciAddress' placeholder='http://myci.mycompany' name='ciAddress' value={model.configuration.address} />
