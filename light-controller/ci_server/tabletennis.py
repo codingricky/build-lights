@@ -33,6 +33,7 @@ class Source():
     def project_status(self, project, branch='master'):
         try:
             person = self.get_person(project)
+            self.logger.log('resolving ' + project + ' to ' + person)
             color = 'blue' if person['streak'] > 0 else 'red' 
             result = color
         except Exception, e:
