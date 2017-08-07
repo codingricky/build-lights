@@ -149,6 +149,7 @@ class LightController:
             while True:
                 for job in jobs:
                     job_name = str(job)
+                    self.ci.reload_people()
                     status = self.ci.project_status(job_name, 'no branch')
                     translator.update(job_name, status)
                 light.join(self.poll_interval_seconds)
