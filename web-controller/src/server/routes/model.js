@@ -36,7 +36,7 @@ module.exports = (router, configFile, lightConfigFile) => {
       const oldJobs = model.tools[jobsIdx].configuration.items
       const newJobs = model.tools[jobsIdx].configuration.items = []
 
-      fetch('http://localhost:8005/jobs', { timeout: 5000 })
+      fetch('http://localhost:8005/jobs', { timeout: 30 * 1000 })
         .then((res) => res.json())
         .then((discoveredJobNames) => {
           discoveredJobNames.forEach((discoveredJobName) => {
