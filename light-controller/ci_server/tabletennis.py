@@ -6,24 +6,22 @@ _STATUS = {
     'aborted'         : STATUS.ABORTED,
     'aborted_anime'   : STATUS.BUILDING_FROM_ABORTED,
     'green_anime'      : STATUS.BUILDING_FROM_SUCCESS,
-    'disabled'        : STATUS.DISABLED,
     'disabled_anime'  : STATUS.BUILDING_FROM_DISABLED,
     'grey'            : STATUS.UNKNOWN,
     'grey_anime'      : STATUS.BUILDING_FROM_UNKNOWN,
     'notbuilt'        : STATUS.NOT_BUILT,
     'notbuilt_anime'  : STATUS.BUILDING_FROM_NOT_BUILT,
-    'red'             : STATUS.FAILURE,
     'red_anime'       : STATUS.BUILDING_FROM_FAILURE,
-    'yellow'          : STATUS.UNSTABLE,
     'yellow_anime'    : STATUS.BUILDING_FROM_UNSTABLE,
+
     'purple'          : STATUS.UNKNOWN,
-    'green'            : STATUS.SUCCESS
+    'green'           : STATUS.SUCCESS,
+    'red'             : STATUS.FAILURE,
+    'yellow'          : STATUS.ABORTED,
+    'black'           : STATUS.DISABLED,
+    'pink'            : STATUS.UNSTABLE,
 }
 
-    # STATUS.UNKNOWN: { 'r': 0x66, 'g': 0x00, 'b': 0xCC, 'blink': False }, # purple
-    # STATUS.SUCCESS: { 'r': 0x00, 'g': 0xCC, 'b': 0x00, 'blink': False }, # green
-    # STATUS.FAILURE: { 'r': 0xCC, 'g': 0x00, 'b': 0x00, 'blink': False }, # red
-    # STATUS.ABORTED: { 'r': 0xCC, 'g': 0xCC, 'b': 0x00, 'blink': False }, # yellow
     # STATUS.DISABLED: { 'r': 0x00, 'g': 0x00, 'b': 0x00, 'blink': False }, # black
     # STATUS.UNSTABLE: { 'r': 0xCC, 'g': 0x00, 'b': 0xCC, 'blink': False }, # pink
     # STATUS.NOT_BUILT: { 'r': 0xCC, 'g': 0xCC, 'b': 0xCC, 'blink': False }, # white
@@ -47,7 +45,7 @@ class Source():
         self.logger.log('token ' + self.api_token)
 
     def reload_people(self):
-        self.people = get_people()
+        self.people = self.get_people()
 
     def list_projects(self):
         self.reload_people()
