@@ -33,14 +33,14 @@ class Source():
     def project_status(self, project, branch='master'):
         try:
             person = self.get_person(project)
-            self.logger.log('resolving ' + project + ' to ' + str(person['name'])
-            color = 'blue' if person['streak'] > 0 else 'red' 
-            result = color
+            self.logger.log('resolving ' + project + ' to ' + str(person['name']))
+            streak_to_color = 'blue' if person['streak'] > 0 else 'red' 
+            result = streak_to_color
         except Exception, e:
             self.logger.log("Error while computing state for project '%s': %s", project, str(e))
             return STATUS.POLL_ERROR
 
-        self.logger.log('resolved ' + project + ' to ' + color)
+        self.logger.log('resolved ' + project + ' to ' + streak_to_color)
         return _STATUS[result]
 
     def get_names(self):
