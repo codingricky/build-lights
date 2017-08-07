@@ -28,21 +28,33 @@ class Source():
         self.logger.log('token ' + self.api_token)
 
     def list_projects(self):
-        self.logger.log('list_projects')
-        params = {'Authorization': self.api_token}
-        self.logger.log('url ' + self.url)
-        data = self._query(self.url)
-        streaks_as_colors = list(map(lambda x: 'blue' if x['player']['streak'] > 0 else 'red' , data))
-        return streaks_as_colors
+        return self.get_names()
 
     def project_status(self, project, branch='master'):
         try:
-            result = project
+            person = self.get_person(project)
+            color = 'blue' if person['streak'] > 0 else 'red' 
+            result = color
         except Exception, e:
             self.logger.log("Error while computing state for project '%s': %s", project, str(e))
             return STATUS.POLL_ERROR
 
         return _STATUS[result]
+
+    def get_names(self):
+        people = self.get_people()
+        names = list(map(lambda x: x['player']['name'], people))
+        return names
+
+    def get_person(self, search_name):
+        people = self.get_people()
+        person = [person for person in people if person['player']['name']==search_name]
+        return person[0]['player']
+
+    def get_people(self):
+        self.logger.log('get_people')
+        params = {'Authorization': self.api_token}
+        return self._query(self.url)
 
     def _query(self, url):
         self.logger.log('url ' + self.url)
