@@ -3,38 +3,16 @@ from lib.constants import STATUS
 from lib import logger
 
 _STATUS = {
-    'aborted'         : STATUS.ABORTED,
-    'aborted_anime'   : STATUS.BUILDING_FROM_ABORTED,
-    'green_anime'      : STATUS.BUILDING_FROM_SUCCESS,
-    'disabled_anime'  : STATUS.BUILDING_FROM_DISABLED,
-    'grey'            : STATUS.UNKNOWN,
-    'grey_anime'      : STATUS.BUILDING_FROM_UNKNOWN,
-    'notbuilt'        : STATUS.NOT_BUILT,
-    'notbuilt_anime'  : STATUS.BUILDING_FROM_NOT_BUILT,
-    'red_anime'       : STATUS.BUILDING_FROM_FAILURE,
-    'yellow_anime'    : STATUS.BUILDING_FROM_UNSTABLE,
-
     'purple'          : STATUS.UNKNOWN,
     'green'           : STATUS.SUCCESS,
     'red'             : STATUS.FAILURE,
     'yellow'          : STATUS.ABORTED,
     'black'           : STATUS.DISABLED,
     'pink'            : STATUS.UNSTABLE,
+    'white'           : STATUS.NOT_BUILT,
+    'cyan'            : STATUS.BUILDING_FROM_DISABLED,
+    'blue'            : STATUS.POLL_ERROR
 }
-
-    # STATUS.DISABLED: { 'r': 0x00, 'g': 0x00, 'b': 0x00, 'blink': False }, # black
-    # STATUS.UNSTABLE: { 'r': 0xCC, 'g': 0x00, 'b': 0xCC, 'blink': False }, # pink
-    # STATUS.NOT_BUILT: { 'r': 0xCC, 'g': 0xCC, 'b': 0xCC, 'blink': False }, # white
-    # STATUS.BUILDING_FROM_UNKNOWN: { 'r': 0x66, 'g': 0x00, 'b': 0xCC, 'blink': True }, # purple
-    # STATUS.BUILDING_FROM_SUCCESS: { 'r': 0x00, 'g': 0xCC, 'b': 0x00, 'blink': True }, # green
-    # STATUS.BUILDING_FROM_FAILURE: { 'r': 0xCC, 'g': 0x00, 'b': 0x00, 'blink': True }, # red
-    # STATUS.BUILDING_FROM_ABORTED: { 'r': 0xCC, 'g': 0xCC, 'b': 0x00, 'blink': True }, # yellow
-    # STATUS.BUILDING_FROM_DISABLED: { 'r': 0x00, 'g': 0xCC, 'b': 0xCC, 'blink': True }, # cyan
-    # STATUS.BUILDING_FROM_UNSTABLE: { 'r': 0xCC, 'g': 0x00, 'b': 0xCC, 'blink': True }, # pink
-    # STATUS.BUILDING_FROM_NOT_BUILT: { 'r': 0xCC, 'g': 0xCC, 'b': 0xCC, 'blink': True }, # white
-    # STATUS.BUILDING_FROM_PREVIOUS_STATE: { 'blink': True },
-    # STATUS.POLL_ERROR: { 'r': 0x00, 'g': 0x00, 'b': 0xCC, 'blink': False }, # blue
-    # STATUS.INVALID_STATUS: { 'r': 0x00, 'g': 0x66, 'b': 0x66, 'blink': False }, # cyan
 
 class Source():
 
