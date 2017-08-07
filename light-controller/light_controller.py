@@ -124,9 +124,9 @@ class LightController:
         job_branches = []
 
         for job in jobs:
-            job_names.append(job)
+            job_names.append(str(job))
             job_branches.append('no branch')
-            dlogger.log("adding " + job)
+            dlogger.log("adding " + str(job))
 
 
 
