@@ -24,6 +24,7 @@ class Source():
         self.logger = logger.Logger('buildkite_ci')
 
     def list_projects(self):
+        self.logger.log('list projects')
         params = {'access_token': self.api_token}
         url = self.endpoint + "/v2/organizations/" + self.username + "/pipelines"
         data = self._query(url, params)

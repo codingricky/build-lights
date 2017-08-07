@@ -170,12 +170,15 @@
                         },
                         "api_token": {
                             "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
                         }
-                    },
-                    "required": [
+                    },"required": [
                         "type",
                         "pollrate_s",
-                        "api_token"
+                        "api_token",
+                        "url"
                     ],
                     "additionalProperties": false
                 }

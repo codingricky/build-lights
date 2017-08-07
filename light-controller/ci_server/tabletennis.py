@@ -1,5 +1,4 @@
-import jenkinsapi
-from jenkinsapi.jenkins import Jenkins
+import urllib2, base64, json
 from lib.constants import STATUS
 from lib import logger
 
@@ -22,18 +21,33 @@ _STATUS = {
 
 class Source():
 
-    def __init__(self, api_token):
-        self.api_token = api_token
+    def __init__(self, api_token, url):
+        self.api_token = 'Bearer ' + api_token
+        self.url = url + '/api/active_players.json'
         self.logger = logger.Logger('tabletennis')
+        self.logger.log('token ' + self.api_token)
 
     def list_projects(self):
-        return list(1, 2, 3)
+        self.logger.log('list_projects')
+        params = {'Authorization': self.api_token}
+        self.logger.log('url ' + self.url)
+        data = self._query(self.url)
+        streaks_as_colors = list(map(lambda x: 'blue' if x['player']['streak'] > 0 else 'red' , data))
+        return streaks_as_colors
 
     def project_status(self, project, branch='master'):
         try:
-            result = 'blue'
+            result = project
         except Exception, e:
             self.logger.log("Error while computing state for project '%s': %s", project, str(e))
             return STATUS.POLL_ERROR
 
         return _STATUS[result]
+
+    def _query(self, url):
+        self.logger.log('url ' + self.url)
+
+        request = urllib2.Request(url)
+        request.add_header("Authorization", self.api_token)
+        response = urllib2.urlopen(request)
+        return json.loads(response.read())

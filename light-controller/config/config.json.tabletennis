@@ -8,7 +8,8 @@
   "ci_server": {
     "type": "tabletennis",
     "pollrate_s": 5,
-    " api_token": "bogus"
+    "api_token": "bogus",
+    "url": "http://www.google.com"
   },
   "jobs": [
     {
