@@ -5,7 +5,6 @@ from lib import logger
 _STATUS = {
     'aborted'         : STATUS.ABORTED,
     'aborted_anime'   : STATUS.BUILDING_FROM_ABORTED,
-    'green'            : STATUS.SUCCESS,
     'green_anime'      : STATUS.BUILDING_FROM_SUCCESS,
     'disabled'        : STATUS.DISABLED,
     'disabled_anime'  : STATUS.BUILDING_FROM_DISABLED,
@@ -16,8 +15,28 @@ _STATUS = {
     'red'             : STATUS.FAILURE,
     'red_anime'       : STATUS.BUILDING_FROM_FAILURE,
     'yellow'          : STATUS.UNSTABLE,
-    'yellow_anime'    : STATUS.BUILDING_FROM_UNSTABLE
+    'yellow_anime'    : STATUS.BUILDING_FROM_UNSTABLE,
+    'purple'          : STATUS.UNKNOWN,
+    'green'            : STATUS.SUCCESS
 }
+
+    # STATUS.UNKNOWN: { 'r': 0x66, 'g': 0x00, 'b': 0xCC, 'blink': False }, # purple
+    # STATUS.SUCCESS: { 'r': 0x00, 'g': 0xCC, 'b': 0x00, 'blink': False }, # green
+    # STATUS.FAILURE: { 'r': 0xCC, 'g': 0x00, 'b': 0x00, 'blink': False }, # red
+    # STATUS.ABORTED: { 'r': 0xCC, 'g': 0xCC, 'b': 0x00, 'blink': False }, # yellow
+    # STATUS.DISABLED: { 'r': 0x00, 'g': 0x00, 'b': 0x00, 'blink': False }, # black
+    # STATUS.UNSTABLE: { 'r': 0xCC, 'g': 0x00, 'b': 0xCC, 'blink': False }, # pink
+    # STATUS.NOT_BUILT: { 'r': 0xCC, 'g': 0xCC, 'b': 0xCC, 'blink': False }, # white
+    # STATUS.BUILDING_FROM_UNKNOWN: { 'r': 0x66, 'g': 0x00, 'b': 0xCC, 'blink': True }, # purple
+    # STATUS.BUILDING_FROM_SUCCESS: { 'r': 0x00, 'g': 0xCC, 'b': 0x00, 'blink': True }, # green
+    # STATUS.BUILDING_FROM_FAILURE: { 'r': 0xCC, 'g': 0x00, 'b': 0x00, 'blink': True }, # red
+    # STATUS.BUILDING_FROM_ABORTED: { 'r': 0xCC, 'g': 0xCC, 'b': 0x00, 'blink': True }, # yellow
+    # STATUS.BUILDING_FROM_DISABLED: { 'r': 0x00, 'g': 0xCC, 'b': 0xCC, 'blink': True }, # cyan
+    # STATUS.BUILDING_FROM_UNSTABLE: { 'r': 0xCC, 'g': 0x00, 'b': 0xCC, 'blink': True }, # pink
+    # STATUS.BUILDING_FROM_NOT_BUILT: { 'r': 0xCC, 'g': 0xCC, 'b': 0xCC, 'blink': True }, # white
+    # STATUS.BUILDING_FROM_PREVIOUS_STATE: { 'blink': True },
+    # STATUS.POLL_ERROR: { 'r': 0x00, 'g': 0x00, 'b': 0xCC, 'blink': False }, # blue
+    # STATUS.INVALID_STATUS: { 'r': 0x00, 'g': 0x66, 'b': 0x66, 'blink': False }, # cyan
 
 class Source():
 
@@ -27,9 +46,8 @@ class Source():
         self.logger = logger.Logger('tabletennis')
         self.logger.log('token ' + self.api_token)
 
-    def reload_people
+    def reload_people(self):
         self.people = get_people()
-    end
 
     def list_projects(self):
         self.reload_people()
