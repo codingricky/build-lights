@@ -5,8 +5,8 @@ from lib import logger
 _STATUS = {
     'aborted'         : STATUS.ABORTED,
     'aborted_anime'   : STATUS.BUILDING_FROM_ABORTED,
-    'blue'            : STATUS.SUCCESS,
-    'blue_anime'      : STATUS.BUILDING_FROM_SUCCESS,
+    'green'            : STATUS.SUCCESS,
+    'green_anime'      : STATUS.BUILDING_FROM_SUCCESS,
     'disabled'        : STATUS.DISABLED,
     'disabled_anime'  : STATUS.BUILDING_FROM_DISABLED,
     'grey'            : STATUS.UNKNOWN,
@@ -33,8 +33,7 @@ class Source():
     def project_status(self, project, branch='master'):
         try:
             person = self.get_person(project)
-            streak_to_color = 'blue' if person['streak'] > 0 else 'red' 
-            result = streak_to_color
+            result = person['color']
         except Exception, e:
             self.logger.log("Error while computing state for project '%s': %s", project, str(e))
             return STATUS.POLL_ERROR
