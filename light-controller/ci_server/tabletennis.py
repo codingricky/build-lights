@@ -39,6 +39,7 @@ class Source():
             self.logger.log("Error while computing state for project '%s': %s", project, str(e))
             return STATUS.POLL_ERROR
 
+        self.logger.log('resolved ' + project + ' to ' + color)
         return _STATUS[result]
 
     def get_names(self):
