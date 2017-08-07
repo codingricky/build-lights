@@ -127,6 +127,8 @@ class LightController:
             job_names.append(job['name'])
             job_branches.append(job['branch'])
 
+        dlogger.log("resolving these jobs " + jobs)
+        
         if len(jobs) < 1:
             dlogger.log("No jobs have been configured")
             sys.exit(-1)
