@@ -27,7 +27,12 @@ class Source():
         self.logger = logger.Logger('tabletennis')
         self.logger.log('token ' + self.api_token)
 
+    def reload_people
+        self.people = get_people()
+    end
+
     def list_projects(self):
+        self.reload_people()
         return self.get_names()
 
     def project_status(self, project, branch='master'):
@@ -42,13 +47,11 @@ class Source():
         return _STATUS[result]
 
     def get_names(self):
-        people = self.get_people()
-        names = list(map(lambda x: x['player']['name'], people))
+        names = list(map(lambda x: x['player']['name'], self.people))
         return names
 
     def get_person(self, search_name):
-        people = self.get_people()
-        person = [person for person in people if person['player']['name']==search_name]
+        person = [person for person in self.people if person['player']['name']==search_name]
         return person[0]['player']
 
     def get_people(self):

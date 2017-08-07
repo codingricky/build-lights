@@ -119,7 +119,7 @@ class LightController:
         light_type = light_conf.pop('type')
         light = importlib.import_module('lights.' + light_type).Strand(**light_conf)
 
-        jobs = self.conf['jobs']
+        jobs = self.list_projects()
         job_names = []
         job_branches = []
 
