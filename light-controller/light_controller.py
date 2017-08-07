@@ -145,11 +145,11 @@ class LightController:
             light.start()
 
             for job in jobs:
-                translator.update(job['name'], STATUS.UNKNOWN)
+                translator.update(str(job), STATUS.UNKNOWN)
             while True:
                 for job in jobs:
-                    job_name = job['name']
-                    status = self.ci.project_status(job_name, job['branch'])
+                    job_name = str(job)
+                    status = self.ci.project_status(job_name, 'no branch')
                     translator.update(job_name, status)
                 light.join(self.poll_interval_seconds)
                 if not light.isAlive():
