@@ -26,7 +26,7 @@ class Job2LedStrip(object):
         if len(self.jobs) == 0 or len(self.jobs) > self.strand.num_leds:
             raise InputError('Unable to map ' + str(len(self.jobs)) + ' jobs to ' + str(self.strand.num_leds) + ' LEDs')
         self.offset = dict.fromkeys(self.jobs)
-        self.leds_per_job = int(self.strand.num_leds / len(self.jobs))
+        self.leds_per_job = 1
 
         index = self.leds_per_job * len(self.jobs)
         for name in self.jobs:
