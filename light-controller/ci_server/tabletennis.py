@@ -18,7 +18,7 @@ class Source():
 
     def __init__(self, api_token, url):
         self.api_token = 'Bearer ' + api_token
-        self.url = url + '/api/active_players.json'
+        self.url = url + '/api/lights.json'
         self.logger = logger.Logger('tabletennis')
         self.logger.log('token ' + self.api_token)
 
